@@ -1,63 +1,43 @@
 <!-- BEGIN: MAIN -->
 
-<h3>{PHP.L.folio}</h3>
-
-<!-- BEGIN: SEARCH -->
-<div class="well">	
+<div class="block" id="schform">
+	<h3>{PHP.L.Search}</h3>
 	<form action="{SEARCH_ACTION_URL}" method="get">
-		<input type="hidden" name="m" value="{PHP.m}" />
-		<input type="hidden" name="p" value="{PHP.p}" />
-		<input type="hidden" name="c" value="{PHP.c}" />
-		<table width="100%" cellpadding="5" cellspacing="0">
-			<tr>
-				<td width="100">{PHP.L.Search}:</td>
-				<td>{SEARCH_SQ}</td>
-			</tr>
-			<tr>
-				<td width="100">{PHP.L.Location}:</td>
-				<td>{SEARCH_LOCATION}</td>
-			</tr>
-			<tr>
-				<td >{PHP.L.Category}:</td>
-				<td>{SEARCH_CAT}</td>
-			</tr>
-			<tr>
-				<td>{PHP.L.Order}:</td>
-				<td>{SEARCH_SORTER}</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>{SEARCH_STATE}<br/></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" name="search" class="btn btn-success" value="{PHP.L.Search}" /></td>
-			</tr>
-		</table>		
+		<div>
+			<input type="hidden" name="m" value="{PHP.m}" />
+			<input type="hidden" name="p" value="{PHP.p}" />
+			<input type="hidden" name="c" value="{PHP.c}" />
+			<input type="hidden" name="type" value="{PHP.type}" />
+			{PHP.L.Search}: {SEARCH_SQ} {PHP.L.Location}:	{SEARCH_LOCATION}
+		</div>
+		<div>
+			{SEARCH_STATE}
+		</div>
+		<div class="action_bar valid">
+			<input type="submit" class="submit" value="{PHP.L.Search}" />
+		</div>		
 	</form>
 </div>
-<!-- END: SEARCH -->
 
-<div id="listfolio">
-	<!-- BEGIN: PRD_ROWS -->
-	<div class="media">
-		<!-- IF {PRD_ROW_MAVATAR.1} -->
-		<div class="pull-left">
-			<a href="{PRD_ROW_URL}"><div class="thumbnail"><img src="{PRD_ROW_MAVATAR.1|cot_mav_thumb($this, 100, 100, crop)}" /></div></a>
-		</div>
-		<!-- ENDIF -->
-		<h4><!-- IF {PRD_ROW_COST} > 0 --><div class="cost pull-right">{PRD_ROW_COST} {PHP.cfg.payments.valuta}</div><!-- ENDIF --><a href="{PRD_ROW_URL}">{PRD_ROW_SHORTTITLE}</a></h4>
-		<p class="owner">{PRD_ROW_OWNER_NAME} <span class="date">[{PRD_ROW_DATE}]</span> &nbsp;{PRD_ROW_COUNTRY} {PRD_ROW_REGION} {PRD_ROW_CITY} &nbsp; {PRD_ROW_ADMIN_EDIT}</p>
-		<p class="text">{PRD_ROW_SHORTTEXT}</p>
-		<p class="type"><a href="{PRD_ROW_CATURL}">{PRD_ROW_CATTITLE}</a></p>
-	</div>
+<div class="block">
+	<h3>{PHP.L.folio}</h3>
+	<table id="listfolio" class="cells">
+		<!-- BEGIN: PRD_ROWS -->
+		<tr>
+			<td class="thumb width100px">	
+				<!-- IF {PRD_ROW_MAVATAR.1} -->
+				<a href="{PRD_ROW_URL}"><img src="{PRD_ROW_MAVATAR.1|cot_mav_thumb($this, 100, 100, crop)}" /></a>
+				<!-- ENDIF -->
+			</td>
+			<td class="title"><a href="{PRD_ROW_URL}" target="blank">{PRD_ROW_SHORTTITLE}</a></td>
+			<td class="cost"><!-- IF {PRD_ROW_COST} > 0 -->{PRD_ROW_COST} {PHP.cfg.payments.valuta}<!-- ENDIF --></td>
+		</tr>
 		<!-- END: PRD_ROWS -->
-</div>	
-
-<!-- IF {PAGENAV_COUNT} > 0 -->	
-<div class="pagination"><ul>{PAGENAV_PAGES}</ul></div>
-<!-- ELSE -->
-<div class="alert">{PHP.L.folio_notfound}</div>
-<!-- ENDIF -->
+	</table>	
+	<div class="action_bar valid">
+		<p class="paging">{PAGENAV_PAGES} </p>
+		<p>&nbsp </p>
+	</div>
+</div>
 
 <!-- END: MAIN -->

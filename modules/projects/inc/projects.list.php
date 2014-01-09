@@ -95,43 +95,6 @@ $mskin = cot_tplfile(array('projects', 'list', $structure['projects'][$item['ite
 
 $t = new XTemplate($mskin);
 
-if(is_array($projects_types)){
-	foreach ($projects_types as $i => $pr_type)
-	{
-		$t->assign(array(
-			"PTYPE_ROW_ID" => $i,
-			"PTYPE_ROW_TITLE" => $pr_type,
-			"PTYPE_ROW_URL" => cot_url('projects', 'c=' . $c . '&type=' . $i),
-			"PTYPE_ROW_ACT" => ($type == $i) ? 'act' : ''
-		));
-		$t->parse("MAIN.SEARCH.PTYPES.PTYPES_ROWS");
-	}
-}
-
-$t->assign(array(
-	"PTYPE_ALL_URL" => cot_url('projects', 'c=' . $c),
-	"PTYPE_ALL_ACT" => (empty($type) && empty($realized)) ? true : false,
-	"REALIZED_URL" => cot_url('projects', 'c=' . $c . '&realized=1'),
-	"REALIZED_ACT" => (!empty($realized)) ? true : false,
-));
-
-$t->parse("MAIN.SEARCH.PTYPES");
-
-$t->assign(array(
-	"SEARCH_ACTION_URL" => cot_url('projects', "&type=" . $type, '', true),
-	"SEARCH_SQ" => cot_inputbox('text', 'sq', $sq, 'class="schstring"'),
-	"SEARCH_CAT" => cot_projects_selectcat($c, 'c'),
-	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false),
-));
-
-/* === Hook === */
-foreach (cot_getextplugins('projects.list.searchtags') as $pl)
-{
-	include $pl;
-}
-/* ===== */
-
-$t->parse("MAIN.SEARCH");
 // ==============================================
 
 /* === Hook === */
@@ -163,7 +126,34 @@ if(!empty($c))
 
 $catpath = cot_breadcrumbs($catpatharray, $cfg['homebreadcrumb'], true);
 
+if (is_array($projects_types))
+{
+	foreach ($projects_types as $i => $pr_type)
+	{
+		$t->assign(array(
+			"PTYPE_ROW_ID" => $i,
+			"PTYPE_ROW_TITLE" => $pr_type,
+			"PTYPE_ROW_URL" => cot_url('projects', 'c=' . $c . '&type=' . $i),
+			"PTYPE_ROW_ACT" => ($type == $i) ? 'act' : ''
+		));
+		$t->parse("MAIN.PTYPES.PTYPES_ROWS");
+	}
+}
+
 $t->assign(array(
+	"PTYPE_ALL_URL" => cot_url('projects', 'c=' . $c),
+	"PTYPE_ALL_ACT" => (empty($type) && empty($realized)) ? true : false,
+	"REALIZED_URL" => cot_url('projects', 'c=' . $c . '&realized=1'),
+	"REALIZED_ACT" => (!empty($realized)) ? true : false,
+));
+
+$t->parse("MAIN.PTYPES");
+$t->assign(array(
+	"SEARCH_ACTION_URL" => cot_url('projects', "&type=" . $type, '', true),
+	"SEARCH_SQ" => cot_inputbox('text', 'sq', $sq, 'class="schstring"'),
+	"SEARCH_CAT" => cot_projects_selectcat($c, 'c'),
+	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false),
+
 	"PAGENAV_PAGES" => $pagenav['main'],
 	"PAGENAV_PREV" => $pagenav['prev'],
 	"PAGENAV_NEXT" => $pagenav['next'],

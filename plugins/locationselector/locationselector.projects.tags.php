@@ -2,7 +2,7 @@
 
 /**
  * [BEGIN_COT_EXT]
- * Hooks=projects.list.searchtags,projects.admin.list.searchtags
+ * Hooks=projects.list.tags,projects.admin.list.tags
  * [END_COT_EXT]
  */
 /**

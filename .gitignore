@@ -38,6 +38,7 @@ sef-urls.nginx.conf
 /plugins/bbcode/
 /plugins/banlist/
 /plugins/ckeditor/
+/plugins/debugconsole/
 /plugins/cleaner/
 /plugins/comments/
 /plugins/contact/

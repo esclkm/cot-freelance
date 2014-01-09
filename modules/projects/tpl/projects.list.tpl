@@ -13,7 +13,6 @@
 	</div>
 	<div class="span9">
 
-		<!-- BEGIN: SEARCH -->
 
 		<!-- BEGIN: PTYPES -->
 		<ul class="nav nav-tabs">
@@ -55,7 +54,6 @@
 				</table>		
 			</form>
 		</div>
-		<!-- END: SEARCH -->
 
 		<div id="listprojects">
 			<!-- BEGIN: PRJ_ROWS -->

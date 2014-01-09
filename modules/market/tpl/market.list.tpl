@@ -19,7 +19,7 @@
 		<!-- IF {CATALOG} --><div class="well well-small">{CATALOG}</div><!-- ENDIF -->
 	</div>
 	<div class="span9">
-		<!-- BEGIN: SEARCH -->
+
 		<div class="well">	
 			<form action="{SEARCH_ACTION_URL}" method="get">
 				<input type="hidden" name="e" value="market" />
@@ -47,7 +47,6 @@
 				</table>		
 			</form>
 		</div>
-		<!-- END: SEARCH -->
 
 		<div id="listmarket">
 			<!-- BEGIN: PRD_ROWS -->
