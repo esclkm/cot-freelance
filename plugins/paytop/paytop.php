@@ -27,8 +27,8 @@ if ($a == 'buy')
 	if (!cot_error_found())
 	{
 
-		$options['desc'] = $L['paytop_buytop_paydesc'].' "'.$pt_cfg[$area]['name'].'"';
-		$options['time'] = 30*60*60*24;
+		$options['desc'] = $L['paytop_buytop_paydesc'].' ('.$pt_cfg[$area]['name'].')';
+		$options['time'] = (!empty($pt_cfg[$area]['period'])) ? $pt_cfg[$area]['period'] : 2592000;
 
 		cot_payments_create_order('paytop.'.$area, $pt_cfg[$area]['cost'], $options);
 	}

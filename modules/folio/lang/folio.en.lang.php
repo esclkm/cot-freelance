@@ -57,7 +57,16 @@ $L['folio_added_mail_subj'] = 'Your work has been published on portfolio';
 $L['folio_senttovalidation_mail_subj'] = 'Your work is submitted for review';
 $L['folio_admin_home_valqueue'] = 'In validation';
 $L['folio_admin_home_public'] = 'Published';
-$L['folio_admin_home_hidden'] = 'Hidden';
+$L['folio_status_hidden'] = 'Hidden';
+
+$L['plu_folio_set_sec'] = 'Works categories';
+$L['plu_folio_res_sort1'] = 'Date';
+$L['plu_folio_res_sort2'] = 'Title';
+$L['plu_folio_res_sort3'] = 'Popularity';
+$L['plu_folio_res_sort3'] = 'Category';
+$L['plu_folio_search_names'] = 'Search in titles';
+$L['plu_folio_search_text'] = 'Search in text';
+$L['plu_folio_set_subsec'] = 'Include subcategories';
 
 $L['folio_added_mail_body'] = 'Hello, {$user_name}. '."\n\n".'Your work "{$prd_name}" has been published on the website {$sitename} - {$link}';
 $L['folio_senttovalidation_mail_body'] = 'Hello, {$user_name}. '."\n\n".'Your work "{$prd_name}" is submitted for review. A moderator will check it as soon as possible.';

@@ -102,12 +102,12 @@ if ($cfg['market']['marketsearch'] && ($tab == 'market' || empty($tab)) && cot_m
 	{
 		$url_cat = cot_url('market', 'c='.$row['item_cat']);
 		$url_market = empty($row['item_alias']) ? cot_url('market', 'c='.$row['item_cat'].'&id='.$row['item_id'].'&highlight='.$hl) : cot_url('market', 'c='.$row['item_cat'].'&al='.$row['item_alias'].'&highlight='.$hl);
-		$t->assign(cot_generate_projecttags($row, 'PLUGIN_MARKETRES_'));
+		$t->assign(cot_generate_markettags($row, 'PLUGIN_MARKETRES_'));
 		$t->assign(array(
 			'PLUGIN_MARKETRES_CATEGORY' => cot_rc_link($url_cat, $structure['market'][$row['item_cat']]['tpath']),
 			'PLUGIN_MARKETRES_CATEGORY_URL' => $url_cat,
 			'PLUGIN_MARKETRES_TITLE' => cot_rc_link($url_market, htmlspecialchars($row['item_title'])),
-			'PLUGIN_MARKETRES_TEXT' => cot_clear_mark($row['item_text'], $row['item_type'], $words),
+			'PLUGIN_MARKETRES_TEXT' => cot_clear_mark($row['item_text'], $words),
 			'PLUGIN_MARKETRES_TIME' => cot_date('datetime_medium', $row['item_date']),
 			'PLUGIN_MARKETRES_TIMESTAMP' => $row['item_date'],
 			'PLUGIN_MARKETRES_ODDEVEN' => cot_build_oddeven($jj),

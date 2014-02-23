@@ -39,6 +39,7 @@ if(is_array($projects_types)){
 $t_pr->assign(array(
 	'PTYPE_ALL_URL' => cot_url('projects', ''),
 	'REALIZED_URL' => cot_url('projects', 'realized=1'),
+	"FORPRO_URL" => cot_url('projects', 'forpro=1'),
 ));
 
 $t_pr->parse("SEARCH.PTYPES");
@@ -47,7 +48,7 @@ $t_pr->assign(array(
 	'SEARCH_ACTION_URL' => cot_url('projects', '', '', true),
 	'SEARCH_SQ' => cot_inputbox('text', 'sq', $sq, 'class="schstring"'),
 	"SEARCH_CAT" => cot_projects_selectcat($c, 'c'),
-	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['market_mostrelevant'], $L['market_costasc'], $L['market_costdesc']), false),
+	"SEARCH_SORTER" => cot_selectbox($sort, "sort", array('', 'costasc', 'costdesc'), array($L['projects_mostrelevant'], $L['projects_costasc'], $L['projects_costdesc']), false),
 ));
 
 /* === Hook === */

@@ -460,8 +460,9 @@ function cot_market_add(&$ritem, $auth = array())
 		$auth = cot_market_auth($ritem['item_cat']);
 	}
 	
-	if(!$cfg['market']['preview']){
-		$ritem['item_state'] = (!$cfg['market']['prevalidate']) ? 0 : 2;
+	if(!$cfg['market']['preview'])
+	{
+		$ritem['item_state'] = (!$cfg['market']['prevalidate'] || $auth['isadmin']) ? 0 : 2;
 	}
 	else
 	{
@@ -549,11 +550,6 @@ function cot_market_delete($id, $ritem = array())
 		}
 	}
 
-	if ($ritem['item_state'] == 0)
-	{
-		cot_market_sync($ritem['item_cat']);
-	}
-
 	foreach ($cot_extrafields[$db_market] as $exfld)
 	{
 		cot_extrafield_unlinkfiles($ritem['item_' . $exfld['field_name']], $exfld);
@@ -561,7 +557,7 @@ function cot_market_delete($id, $ritem = array())
 
 	$db->delete($db_market, "item_id = ?", $id);
 	cot_log("Deleted product #" . $id, 'adm');
-
+	cot_market_sync($ritem['item_cat']);
 	/* === Hook === */
 	foreach (cot_getextplugins('market.edit.delete.done') as $pl)
 	{
@@ -619,8 +615,9 @@ function cot_market_update($id, &$ritem, $auth = array())
 		$ritem['item_alias'] = $item['item_alias']; 
 	}
 	
-	if(!$cfg['market']['preview']){
-		$ritem['item_state'] = (!$cfg['market']['prevalidate']) ? 0 : 2;
+	if(!$cfg['market']['preview'])
+	{
+		$ritem['item_state'] = (!$cfg['market']['prevalidate'] || $auth['isadmin']) ? 0 : 2;
 	}
 	else
 	{

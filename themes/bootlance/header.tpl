@@ -56,7 +56,6 @@
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<div class="nav-collapse collapse">
 						<ul class="nav pull-right">
 							<!-- BEGIN: GUEST -->
 							<li><a href="{PHP|cot_url('login')}" data-toggle="modal" onClick="$('#AuthModal').modal(); return false;">{PHP.L.Login}</a></li>
@@ -102,7 +101,6 @@
 							<li>{HEADER_USER_LOGINOUT}</li>
 							<!-- END: USER -->
 						</ul>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -128,8 +126,8 @@
 				<ul class="nav">
 					<li<!-- IF {PHP.env.ext} == 'index' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('index')}">{PHP.L.Home}</a></li>
 					<li<!-- IF {PHP.env.ext} == 'projects' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('projects')}">{PHP.L.projects_projects}</a></li>
-					<li<!-- IF {PHP.env.ext} == 'users' AND ({PHP.group} == 'freelancer' AND {PHP.m} == 'main' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('users', 'group=freelancer')}">{PHP.L.freelancers}</a></li>
-					<li<!-- IF {PHP.env.ext} == 'users' AND ({PHP.group} == 'employer' AND {PHP.m} == 'main' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('users', 'group=employer')}">{PHP.L.employers}</a></li>
+					<li<!-- IF {PHP.env.ext} == 'users' AND ({PHP.group} == 'freelancer' AND {PHP.m} == 'main' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('users', 'group=freelancer')}">{PHP.cot_groups.4.name}</a></li>
+					<li<!-- IF {PHP.env.ext} == 'users' AND ({PHP.group} == 'employer' AND {PHP.m} == 'main' --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('users', 'group=employer')}">{PHP.cot_groups.7.name}</a></li>
 					<li<!-- IF {PHP.env.ext} == 'market' AND !{PHP.type} --> class="active"<!-- ENDIF -->><a href="{PHP|cot_url('market')}">{PHP.L.market}</a></li>
 				</ul>
 			</div>

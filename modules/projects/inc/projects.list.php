@@ -18,6 +18,7 @@ $sort = cot_import('sort', 'G', 'ALP');
 $c = cot_import('c', 'G', 'ALP');
 $realized = cot_import('realized', 'G', 'INT');
 $sq = cot_import('sq', 'G', 'TXT');
+$forpro = cot_import('forpro', 'G', 'INT');
 
 $maxrowsperpage = ($cfg['projects']['cat_' . $c]['maxrowsperpage']) ? $cfg['projects']['cat_' . $c]['maxrowsperpage'] : $cfg['projects']['cat___default']['maxrowsperpage'];
 list($pn, $d, $d_url) = cot_import_pagenav('d', $maxrowsperpage);
@@ -145,6 +146,7 @@ $t->assign(array(
 	"PTYPE_ALL_ACT" => (empty($type) && empty($realized)) ? true : false,
 	"REALIZED_URL" => cot_url('projects', 'c=' . $c . '&realized=1'),
 	"REALIZED_ACT" => (!empty($realized)) ? true : false,
+	"FORPRO_URL" => cot_url('projects', 'c=' . $c . '&type=' . $type . '&forpro=1'),
 ));
 
 $t->parse("MAIN.PTYPES");

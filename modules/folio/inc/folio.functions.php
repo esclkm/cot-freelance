@@ -460,8 +460,9 @@ function cot_folio_add(&$ritem, $auth = array())
 		$auth = cot_folio_auth($ritem['item_cat']);
 	}
 	
-	if(!$cfg['folio']['preview']){
-		$ritem['item_state'] = (!$cfg['folio']['prevalidate']) ? 0 : 2;
+	if(!$cfg['folio']['preview'])
+	{
+		$ritem['item_state'] = (!$cfg['folio']['prevalidate'] || $auth['isadmin']) ? 0 : 2;
 	}
 	else
 	{
@@ -549,16 +550,12 @@ function cot_folio_delete($id, $ritem = array())
 		}
 	}
 
-	if ($ritem['item_state'] == 0)
-	{
-		cot_folio_sync($ritem['item_cat']);
-	}
-
 	foreach ($cot_extrafields[$db_folio] as $exfld)
 	{
 		cot_extrafield_unlinkfiles($ritem['item_' . $exfld['field_name']], $exfld);
 	}
-
+	
+	cot_folio_sync($ritem['item_cat']);
 	$db->delete($db_folio, "item_id = ?", $id);
 	cot_log("Deleted product #" . $id, 'adm');
 
@@ -619,8 +616,9 @@ function cot_folio_update($id, &$ritem, $auth = array())
 		$ritem['item_alias'] = $item['item_alias']; 
 	}
 	
-	if(!$cfg['folio']['preview']){
-		$ritem['item_state'] = (!$cfg['folio']['prevalidate']) ? 0 : 2;
+	if(!$cfg['folio']['preview'])
+	{
+		$ritem['item_state'] = (!$cfg['folio']['prevalidate'] || $auth['isadmin']) ? 0 : 2;
 	}
 	else
 	{

@@ -88,7 +88,7 @@ if ($a == 'update')
 
 	if (!cot_error_found())
 	{
-		cot_folio_update($id, $ritem);
+		cot_folio_update($id, $ritem, $usr);
 
 		switch ($ritem['item_state'])
 		{

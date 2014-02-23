@@ -23,3 +23,6 @@ Copyright 2014 CMSWorks Team (CMSWorks.ru)
 3. Далее следуете инструкции, опубликованной по ссылке: http://cmsworks.ru/docs/docs-apps/freelance2-docs/instrukciya-po-ustanovke
 
 Если нет желания собирать сайт по частям, готовую сборку фриланс-биржи можно скачать на нашем сайте CMSWorks.ru
+
+
+исльзование для сравнения https://github.com/cmsworksru/cot-freelance/compare/2df7ebf156c408c895ff7ce30b57e62f33edb7fa...feb0eda609932ac019ca301fd522c24df682b756

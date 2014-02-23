@@ -40,7 +40,8 @@ if ($a == 'save')
 	cot_check_xg();
 
 	$ritem = array();
-	if($cfg['market']['prevalidate']){
+	if($cfg['market']['prevalidate'] && !$usr['isadmin'])
+	{
 		$ritem['item_state'] = 2;
 		
 		$r_url = (empty($ritem['item_alias'])) ? 
